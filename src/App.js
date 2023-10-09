@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import FirstPerson from "./PersonInfos/FirstPerson";
+import SecondPerson from "./PersonInfos/SecondPerson";
+import ThirdPerson from "./PersonInfos/ThirdPerson";
 
 function App() {
+  const [infoList, setInfoList] = useState([]);
+  
+
+  const handeInfoList = (value) => {
+    setInfoList([...infoList,value])
+  }
+
+  const handleShowAllInfos = () => {
+    console.log(infoList);
+    return 10;
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FirstPerson info={handeInfoList}/>
+      <SecondPerson info={handeInfoList} />
+      <ThirdPerson  info={handeInfoList}/>
+
+      <button onClick={handleShowAllInfos} style={{ marginTop: "100px" }}>Show All Person List</button>
+
     </div>
   );
 }
